@@ -1,12 +1,12 @@
-# Go Fanning in and Fanning Out Pattern
+## Go Fanning in and Fanning Out Pattern
 
  
  Lets suppose you have a random number generator Go-Routine & you have to filter out Primes from those random numbers & then you want to log say K primes only, So We have in this Case following functions
 
 
- Generator (Write)------>(Read)   PrimeFinder   (Write)------>(Read)   LogKPrimes 
+ ### Generator (Write)------>(Read)   PrimeFinder   (Write)------>(Read)   LogKPrimes 
 
- Where ----------> Represents a communication channel with corresponding reader & writer
+ ### Where ----------> Represents a communication channel with corresponding reader & writer
 
  In order to sync all three go-routines we have to make sure to share some communication pipe (channels) with all those 3 routines as shown above. Now This program might take sometime as this is highly inefficient (Yeah!)
 
@@ -14,7 +14,7 @@
 
  So why not spin multiple instances of the PrimeFinder to quickly filter Primes & then Log them.
 
-                         PrimeFinder1
- Generator ---->FanOut   PrimeFinder2  FanIn----------> LogKPrimes
-                         PrimeFinder3
+                         
+### Generator ---->FanOut   [PrimeFinder1 PrimeFinder2 PrimeFinder3]  FanIn----------> LogKPrimes
+                         
 
